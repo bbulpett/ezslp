@@ -1,0 +1,87 @@
+<%= form_for @patient do |f| %>
+  <%= f.error_messages %>
+<table>
+<tr>
+<th><%= f.label :first_name %></th>
+<th><%= f.label :middle_name %></th>
+<th><%= f.label :last_name%></th>
+</tr>
+<tr>
+<td><%= f.text_field :first_name, :size => 20 %></td>
+<td><%= f.text_field :middle_name, :size => 20%></td>
+<td><%= f.text_field :last_name, :size => 20%></td>
+</tr>
+</table>
+<table>
+<tr>
+    <th><%= f.label :address_1 %></th>
+   <th> <%= f.label :address_2 %></th>
+</tr>
+<tr>
+   <td> <%= f.text_field :address_1 %></td>
+   <td> <%= f.text_field :address_2 %></td>
+<tr>
+</table>
+<table>
+<tr>
+<th><%= f.label :city%></th>
+<th><%= f.label :state%></th>
+<th><%= f.label :zip%></th>
+<th><%= f.label :phone%></th>
+</tr>
+<tr>
+<td><%= f.text_field :city, :size => 20 %></td>
+<td><%= f.text_field :state, :size => 2%></td>
+<td><%= f.text_field :zip, :size => 6%></td>
+<td><%= f.text_field :phone, :size => 9%></td>
+</tr>
+</table>
+  <p>
+    <%= 'Date of Birth'  %>
+    <%= f.date_select :dob, :start_year => 1930, :order => [:month, :day, :year]%><br/><br/>
+    <%= f.label :contact%>
+    <%= f.text_field :contact%><br/>
+    <%= f.label :medicaid_number%>
+    <%= f.text_field :medicaid_number%>
+  </p>
+  <%= f.fields_for :patient_authorizations do |pat_auth| %>
+    <%= 'Authorization/Contract Period(click to choose date)' %>
+    <a id="pat_auth_help_1" class="slick-toggle" data-id="334" href="#"><img src="/assets/help.png"></a><br/>
+    <div id="pat_auth_help_2" class="slickbox" data-id="334" style="display: block;">
+      The Authorization or Contract Period is the dates in which you will perform visits for a patient. An initial Patient Authorization is created when a new patient is created. After a patients initial visits have been exhausted a patient will need to be re-authorized to perform additional visits. This is a logical way for you to manage patient contracts or Medicare Authorization.<br/>
+    </div>
+    <%= pat_auth.text_field :from_date, :size => 10 %>
+    <%= 'To' %>
+    <%= pat_auth.text_field :to_date, :size => 10 %><br/><br/>
+    <%= 'Number of Visits for this Authorization Period' %><br/>
+    <%= pat_auth.text_field :initial_number_visits, :size => 2 %><br/><br/>
+    <b><%= 'To add a Plan Of Care' %></b>
+    <a id="dropdown_1" class="slick-toggle" data-id="335" href="#">Click Here<img src="/assets/dropdown.jpg"></a><br/>
+    <div id="dropdown_2" class="slickbox" data-id="335" style="display: block;">
+    <%= 'Short Term Goals' %><br/>
+    <%= pat_auth.text_area :short_term_goals, :cols => "60", :rows => "10" %><br/>
+    <%= 'Long Term Goals' %><br/>
+    <%= pat_auth.text_area :long_term_goals, :cols => "60", :rows => "10" %><br/>
+    <%= 'Number of Visits per Week (Frequency)' %><br/>
+    <%= pat_auth.text_field :frequency_per_week %><br/>
+    <%= 'Session Length' %><br/>
+    <%= pat_auth.text_field :session_length %><br/>
+    <%= 'Severity Level' %>
+    <%= pat_auth.select :severity_level, options_for_select(['Mild', 'Moderate', 'Severe']) %><br/>
+    <%= 'Diagnosis' %>
+    <%= pat_auth.select :diagnosis, options_for_select(['Articulation', 'Fluency', 'Receptive Language', 'Expresive Language']) %>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :user %>
+    <a id="user_help_1" class="slick-toggle" data-id="336" href="#"><img src="/assets/help.png"></a><br/>
+    <div id="user_help_2" class="slickbox" data-id="336" style="display: block;">
+      Assign a user to a patient. This user will be able to create visits for this patient. Remember an Admin user can create visits for all patients. A user with the Therapist role can only create visits for patients assigned to them.
+    </div>
+
+    <%=
+        collection_select(:patient, :user_id, @users, :id, :email)
+    %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

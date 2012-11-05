@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Therapist</th>
+    <th>Remaining Visits</th>
+  </tr>
+  <% for patient in @patients %>
+    <tr>
+      <td><%= patient.first_name %></td>
+      <td><%= patient.last_name %></td>
+      <td><%= patient.user.email %></td>
+      <td><center><%=h patient.show_remaining_visits(patient) %></center></td>
+      <td><%= link_to "Show", patient, :class => 'btn btn-mini'  %></td>
+      <td><%= if current_user.admin? then link_to "Edit", edit_patient_path(patient), :class => 'btn btn-mini'  end %></td>
+      <td><%= if current_user.admin?  then link_to "Destroy", patient, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' end %></td>
+    </tr>
+  <% end %>
+</table>
+<%= if current_user.admin? then link_to 'New Patient', new_patient_path, :class => 'btn btn-primary' end %><p/>

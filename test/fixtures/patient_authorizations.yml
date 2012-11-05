@@ -1,0 +1,13 @@
+one:
+  to_date: 2011-11-18
+  from_date: 2011-11-18
+  patient_id: 1
+  initial_number_visits: 1
+  active: false
+
+two:
+  to_date: 2011-11-18
+  from_date: 2011-11-18
+  patient_id: 1
+  initial_number_visits: 1
+  active: false

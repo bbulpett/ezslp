@@ -1,0 +1,29 @@
+<table>
+  <tr>
+    <th>From Date</th>
+    <th>To Date</th>
+    <th>Patient</th>
+    <th>Therapist</th>
+    <th>Initial Number<br/>
+        of Visits</th>
+    <th>Current Number<br/>
+        of Visits Remaining</th>
+  </tr>
+  <% for patient_authorization in @patient_authorizations %>
+    <tr>
+      <td><%= patient_authorization.from_date %></td>
+      <td><%= patient_authorization.to_date %></td>
+      <td><%= patient_authorization.patient.patient_full_name %></td>
+      <td><%= patient_authorization.patient.user.email %></td>
+      <td><center><%= patient_authorization.initial_number_visits %></center></td>
+      <td><center><%=h patient_authorization.current_number_visits %></center></td>
+      <td><%= if current_user.admin? then link_to "Show", patient_authorization, :class => 'btn btn-mini'  end %></td>
+      <td><%= if current_user.admin? then link_to "Edit", edit_patient_authorization_path(patient_authorization), :class => 'btn btn-mini'  end %></td>
+      <td><%= if current_user.admin? then link_to "Destroy", patient_authorization,
+                  :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' end %></td>
+      <td><%= link_to 'Visits', patient_authorization_visits_path(patient_authorization), :class => 'btn btn-mini' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= if current_user.admin? then link_to "Re-Authorize a Patient", new_patient_authorization_path, :class => 'btn btn-primary' end %></p>

@@ -1,0 +1,28 @@
+<% title "Visit" %>
+
+<p>
+  <strong>Visit Date:</strong>
+  <%= @visit.visit_date %>
+</p>
+<p>
+  <strong>Therapist:</strong>
+  <%= @visit.therapist_name %>
+</p>
+<p>
+  <strong>Patient:</strong>
+  <%= @visit.patient_authorization.patient.patient_full_name %>
+</p>
+<p>
+  <strong>Session Length:</strong>
+  <%= @visit.session_length %>
+</p>
+<p>
+  <strong>Visit Notes:</strong>
+  <%= @visit.visit_notes %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_visit_path(@visit) %> |
+  <%= link_to "Destroy", @visit, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", visits_path %>
+</p>

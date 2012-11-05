@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!--See app/models/user.rb for send mail method -->
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Welcome to ezslp.com</h1>
+    <p>
+      You have successfully registered for ezslp.com,
+      your username is: <%= @user.email %>.<br/>
+    </p>
+    <p>To login to the site, just follow this link: http://ezslp.com/login </p>
+    <p>For support please email info@ezslp.com.</p>
+    <p>To reset your password go to http://ezslp.com/users/password/new </p>
+  </body>
+</html>
+

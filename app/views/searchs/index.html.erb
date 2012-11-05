@@ -1,0 +1,17 @@
+<%= form_tag "visits/search_visits_by_date" do %>
+<p/>
+<%= 'Enter the dates to print' %>
+<p/>
+<%= select_date(Date.current, :order => [:month, :day, :year], :prefix => 'from_date') %>
+- to-
+<%= select_date(Date.current, :order => [:month, :day, :year], :prefix => 'to_date') %>
+<%= submit_tag "Search by Date" %>
+<% end %>
+
+<%= form_tag "visits/search_visits_by_patient_authorization" do %>
+<p/>
+<%= 'Choose Patient Authorization/Contract Period' %>
+<p/>
+    <%= collection_select(:patient_authorization, :patient_authorization_id, @patient_authorizations, :id, :name_with_dates) %>
+<%= submit_tag "Search" %>
+<% end %>

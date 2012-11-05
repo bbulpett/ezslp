@@ -1,0 +1,22 @@
+<h2>Sign up</h2>
+<h3><font color="red">*</font>Required Fields</h3>
+<% resource.organization ||= Organization.new %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  <div><%= 'Email' %><font color="red">*</font><br />
+  <%= f.text_field :email %></div>
+    <%= f.fields_for :organization do |org| %>
+      <div><%= 'Company Name' %><font color="red">*</font><br />
+      <%= org.text_field :name %></div>
+      <div><%= 'Contact Name' %><br />
+      <%= org.text_field :contact %></div>
+      <div><%= 'Phone Number' %><br />
+      <%= org.text_field :phone %></div>
+    <% end %>
+  <div><%= 'Password' %><font color="red">*</font><br />
+  <%= f.password_field :password %></div>
+  <div><%= 'Password Confirmation' %><font color="red">*</font><br />
+  <%= f.password_field :password_confirmation %></div>
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+<%= render :partial => "devise/shared/links" %>

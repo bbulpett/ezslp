@@ -1,0 +1,36 @@
+<h3>You may  create a private account by filling out the information below, or use our guest account. The guest account's username is guest@ezslp.com with a password of 'test'.</h3>
+<p><font color="red">*</font>Required fields</p>
+<%= form_for @user, :url => user_registration_path do |f| %>
+  <table>
+  <tr>
+    <%= f.fields_for :organization do |org| %>
+    <td><%= 'Company Name' %><font color="red">*</font></td>
+    <td><%= org.text_field :name %></td>
+  </tr>
+  <tr>
+    <td><%= 'Contact Name' %></td>
+    <td><%= org.text_field :contact %></td>
+  </tr>
+  <tr>
+    <td><%= 'Phone Number' %></td>
+    <td><%= org.text_field :phone %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td><%= f.label :email, "Email (This will be your login ID)" %><font color="red">*</font></td>
+    <td><%= f.text_field :email%></td>
+  </tr>
+   <p/>
+  <tr>
+     <td><%= f.label :password, "Password" %><font color="red">*</font></td>
+     <td><%= f.password_field :password %></td>
+  </tr>
+   <p/>
+  <tr>
+     <td><%= f.label :password_confirmation, "Password Confirmation" %><font color="red">*</font></td>
+     <td><%= f.password_field :password_confirmation %></td>
+  </tr>
+  <p/>
+  </table>
+     <%= f.submit "Submit" %>
+<% end %>

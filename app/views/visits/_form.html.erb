@@ -1,0 +1,22 @@
+<%= form_for @visit do |f| %>
+  <%= f.error_messages %>
+</p>
+    <%= f.label :patient %><br />
+    <%=#only display patients that have active authorizations and are associated to the current user
+      collection_select(:visit, :patient_authorization_id, @patients, :id, :name_with_visits)
+     %>
+  </p>
+  <p>
+    <%= f.label 'Visit Date (click to enter)' %><br />
+    <%= f.text_field :visit_date, :size => 10 %>
+  </p>
+  <p>
+    <%= f.label 'Session Length(in minutes)' %><br />
+    <%= f.text_field :session_length, :size => '3' %>
+  </p>
+  <p>
+    <%= f.label :visit_notes %><br />
+    <%= f.text_area :visit_notes, :cols => "60", :rows => "10" %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

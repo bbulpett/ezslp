@@ -1,0 +1,14 @@
+<%= form_for("user", :url => user_session_path) do |f| %>
+  <table>
+  <tr>
+    <td><%= f.label :email %></td>
+    <td><%= f.text_field :email %></td>
+  </tr>
+  <td><%= f.label :password %></td>
+  <td><%= f.password_field :password %></td>
+  </table>
+  <%= f.check_box :remember_me %>
+  <%= f.label :remember_me %><p/>
+  <%= f.submit 'Sign in' %><p/>
+  <%= link_to "Forgot your password?", new_password_path('user') %>
+<% end %>

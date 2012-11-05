@@ -1,0 +1,36 @@
+<%= form_for @patient_authorization do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label 'Patient' %><br />
+    <% @patients = Patient.get_patients(current_user).sort! {|a,b| a.last_name <=> b.last_name} %>
+    <%= collection_select(:patient_authorization, :patient_id, @patients, :id, :patient_full_name) %>
+  </p>
+
+    <%= 'Authorization/Contract Period(click to choose date)' %>
+    <a id="pat_auth_help_1" class="slick-toggle" data-id="334" href="#"><img src="/assets/help.png"></a><br/>
+    <div id="pat_auth_help_2" class="slickbox" data-id="334" style="display: block;">
+      The Authorization or Contract Period is the dates in which you will perform visits for a patient. An initial Patient Authorization is created when a new patient is created. After a patients initial visits have been exhausted a patient will need to be re-authorized to perform additional visits. This is a logical way for you to manage patient contracts or Medicare Authorization.<br/>
+    </div>
+    <%= f.text_field :from_date, :size => 10 %>
+    <%= 'To' %>
+    <%= f.text_field :to_date, :size => 10 %><br/><br/>
+    <%= 'Number of Visits for this Authorization Period' %><br/>
+    <%= f.text_field :initial_number_visits, :size => 2 %><br/><br/>
+    <b><%= 'To add a Plan Of Care' %></b>
+    <a id="dropdown_1" class="slick-toggle" data-id="335" href="#">Click Here<img src="/assets/dropdown.jpg"></a><br/>
+    <div id="dropdown_2" class="slickbox" data-id="335" style="display: block;">
+    <%= 'Short Term Goals' %><br/>
+    <%= f.text_area :short_term_goals, :cols => "160", :rows => "10" %><br/>
+    <%= 'Long Term Goals' %><br/>
+    <%= f.text_area :long_term_goals, :cols => "60", :rows => "10" %><br/>
+    <%= 'Number of Visits per Week (Frequency)' %><br/>
+    <%= f.text_field :frequency_per_week %><br/>
+    <%= 'Session Length' %><br/>
+    <%= f.text_field :session_length %><br/>
+    <%= 'Severity Level' %>
+    <%= f.select :severity_level, options_for_select(['Mild', 'Moderate', 'Severe']) %><br/>
+    <%= 'Diagnosis' %>
+    <%= f.select :diagnosis, options_for_select(['Articulation', 'Fluency', 'Receptive Language', 'Expresive Language']) %>
+    </div>
+    <p><%= f.submit %></p>
+<% end %>

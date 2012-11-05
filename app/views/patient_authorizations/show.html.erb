@@ -1,0 +1,55 @@
+<% title "Patient Authorization" %>
+
+<p>
+  <strong>To Date:</strong>
+  <%= @patient_authorization.to_date %>
+</p>
+<p>
+  <strong>From Date:</strong>
+  <%= @patient_authorization.from_date %>
+</p>
+<p>
+  <strong>Patient:</strong>
+  <%= @patient_authorization.patient.patient_full_name %>
+</p>
+<p>
+  <strong>Initial Number Visits:</strong>
+  <%= @patient_authorization.initial_number_visits %>
+</p>
+<p>
+  <strong>Active Status:</strong>
+  <%= @patient_authorization.active %>
+</p>
+<b>Plan of Care</b>
+<div style="width:300px;height:220px;border:1px solid black;">
+<p>
+  <b>Short term goals:</b>
+  <%=h @patient_authorization.short_term_goals %>
+</p>
+<p>
+  <b>Long term goals:</b>
+  <%=h @patient_authorization.long_term_goals %>
+</p>
+<p>
+  <b>Number of Visits per Week (Frequency):</b>
+  <%=h @patient_authorization.frequency_per_week %>
+</p>
+<p>
+  <b>Session Length:</b>
+  <%=h @patient_authorization.session_length %>
+</p>
+<p>
+  <b>Severity Level:</b>
+  <%=h @patient_authorization.severity_level %>
+</p>
+<p>
+  <b>Diagnosis:</b>
+  <%=h @patient_authorization.diagnosis %>
+</p>
+</div>
+
+<p>
+  <%= link_to "Edit", edit_patient_authorization_path(@patient_authorization) %> |
+  <%= link_to "Destroy", @patient_authorization, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", patient_authorizations_path %>
+</p>

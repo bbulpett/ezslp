@@ -1,0 +1,52 @@
+<% title "Patient" %>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @patient.first_name %>
+</p>
+<p>
+  <strong>Middle Name:</strong>
+  <%= @patient.middle_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%= @patient.last_name %>
+</p>
+<p>
+  <strong>Address 1:</strong>
+  <%= @patient.address_1 %>
+</p>
+<p>
+  <strong>Address 2:</strong>
+  <%= @patient.address_2 %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%= @patient.city %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%= @patient.state %>
+</p>
+<p>
+  <strong>Zip:</strong>
+  <%= @patient.zip %>
+</p>
+<p>
+  <strong>Phone:</strong>
+  <%= @patient.phone %>
+</p>
+<p>
+  <strong>Therapist:</strong>
+  <%= @patient.user.email %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_patient_path(@patient) %> |
+  <%= link_to "Back", patients_path %> |
+  <% if @patient.show_remaining_visits(@patient) != 'No Active Authorizations' then %>
+  <%= link_to 'New Visit', new_visit_path({:patient_id => @patient}) %>
+  <% else %>
+  <%= 'No Active Authorizations' %>
+  <% end %>
+</p>

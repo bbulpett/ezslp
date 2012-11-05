@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Visit Date</th>
+    <th>Patient</th>
+    <th>Therapist</th>
+    <th>Session Length</th>
+  </tr>
+  <% for visit in @visits %>
+    <tr>
+      <td><%= visit.visit_date %></td>
+      <td><%= visit.patient_authorization.patient.patient_full_name %></td>
+      <td><%= visit.therapist_name %></td>
+      <td><center><%= visit.session_length %></center></td>
+      <td><%= link_to "Show", visit, :class => 'btn btn-mini' %></td>
+      <td><%= link_to "Edit", edit_visit_path(visit), :class => 'btn btn-mini' %></td>
+      <td><%= link_to "Destroy", visit, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @visits %>
+<p><%= link_to "New Visit", new_visit_path, :class => 'btn btn-primary' %></p><p align="right"><%= link_to 'Search Visits', searchs_path %><br/></p>

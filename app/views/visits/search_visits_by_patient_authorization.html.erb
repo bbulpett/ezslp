@@ -1,0 +1,21 @@
+Your search returned <font color='red'><%= @visits.count  %></font> visits
+<div id='pdf_link'>
+  <p><%= link_to "Print PDF", visits_search_visits_by_patient_authorization_path(params.merge(format: 'pdf')) %></p>
+</div>
+<% for visit in @visits %>
+<div id='visit'>
+  <strong>Visit Date:</strong>
+  <%= visit.visit_date %><br/>
+  <strong>User:</strong>
+  <%= visit.patient_authorization.patient.user.email %><br/>
+  <strong>Patient:</strong>
+  <%= visit.patient_authorization.patient.patient_full_name %><br/>
+  <strong>Visit Notes:</strong>
+  <%= visit.visit_notes %><br/><br/>
+  <strong>Speech Pathologist:</strong>
+  <%= 'Speech Pathologist ______________________________' %><br/>
+  <strong>SLP Assistant:</strong>
+  <%= 'SLP Assistant  _______________________________________' %><br/><br/><br/><br/>
+</div>
+<% end %>
+

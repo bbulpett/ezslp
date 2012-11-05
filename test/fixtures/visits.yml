@@ -1,0 +1,11 @@
+one:
+  visit_date: 2011-11-20
+  user_id: 1
+  patient_authorization_id: 1
+  visit_notes: MyString
+
+two:
+  visit_date: 2011-11-20
+  user_id: 1
+  patient_authorization_id: 1
+  visit_notes: MyString

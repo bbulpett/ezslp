@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!--See app/models/user.rb for send mail method -->
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>ezslp.com Registration Notification</h1>
+    <p>
+      <%= @user.email %> of <%= @user.organization.name  %> successfully registered for ezslp.com<br/>
+    </p>
+  </body>
+</html>
+

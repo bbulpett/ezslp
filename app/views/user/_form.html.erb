@@ -1,0 +1,19 @@
+<p><%= f.label 'Email (login name)' %><br />
+<%= f.email_field :email %></p>
+
+<p><%= f.label :password %><br />
+<%= f.password_field :password %></p>
+
+<p><%= f.label :password_confirmation %><br />
+<%= f.password_field :password_confirmation %></p>
+
+<% if can? :manage, @users %>
+<p><%= f.label :role %>: <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+    <a id="pat_auth_help_1" class="slick-toggle" data-id="334" href="#"><img src="/assets/help.png"></a><br/>
+    <div id="pat_auth_help_2" class="slickbox" data-id="334" style="display: block;">
+      You may choose a role of either 'Admin' or 'Therapist' for a user. An 'Admin' user in your application has the ability to perform all tasks on all patients in the system, in addition to creating other users. A user with the 'Therapist' role can only perform tasks on patients that are assigned to them, and cannot create other users.
+    </div>
+</p>
+<% end %>
+
+<p><%= f.submit "Submit" %></p>
