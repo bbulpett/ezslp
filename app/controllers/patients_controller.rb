@@ -6,7 +6,7 @@ class PatientsController < ApplicationController
     @patients.sort! { |a,b| a.last_name.downcase <=> b.last_name.downcase }
   end
 
-#if conditionals below only allows user to view model if it is returned via the get_tasks method
+#if conditionals below only allows user to view model if it is returned via the get_patients method
  def show
     if @patient = Patient.get_patients(current_user).select {|p| p.id.eql?(params[:id].to_i) }.first
       respond_to do |format|
