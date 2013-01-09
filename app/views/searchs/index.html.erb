@@ -12,6 +12,7 @@
 <p/>
 <%= 'Choose Patient Authorization/Contract Period' %>
 <p/>
-    <%= collection_select(:patient_authorization, :patient_authorization_id, @patient_authorizations, :id, :name_with_dates) %>
-<%= submit_tag "Search" %>
+  <%= collection_select(:patient_authorization, :patient_authorization_id,
+												@patient_authorizations, :id, :name_with_dates) %>
+	<%= submit_tag "Search", :id => 'search_by_pat_auth' %>
 <% end %>
