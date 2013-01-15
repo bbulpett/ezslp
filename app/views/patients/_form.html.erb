@@ -58,18 +58,18 @@
     <b><%= 'To add a Plan Of Care' %></b>
     <a id="dropdown_1" class="slick-toggle" data-id="335" href="#">Click Here<img src="/assets/dropdown.jpg"></a><br/>
     <div id="dropdown_2" class="slickbox" data-id="335" style="display: block;">
-    <%= 'Short Term Goals' %><br/>
-    <%= pat_auth.text_area :short_term_goals, :cols => "60", :rows => "10" %><br/>
-    <%= 'Long Term Goals' %><br/>
-    <%= pat_auth.text_area :long_term_goals, :cols => "60", :rows => "10" %><br/>
-    <%= 'Number of Visits per Week (Frequency)' %><br/>
-    <%= pat_auth.text_field :frequency_per_week %><br/>
-    <%= 'Session Length' %><br/>
-    <%= pat_auth.text_field :session_length %><br/>
-    <%= 'Severity Level' %>
-    <%= pat_auth.select :severity_level, options_for_select(['Mild', 'Moderate', 'Severe']) %><br/>
-    <%= 'Diagnosis' %>
-    <%= pat_auth.select :diagnosis, options_for_select(['Articulation', 'Fluency', 'Receptive Language', 'Expresive Language']) %>
+			<%= 'Short Term Goals' %><br/>
+			<%= pat_auth.text_area :short_term_goals, :cols => "60", :rows => "10" %><br/>
+			<%= 'Long Term Goals' %><br/>
+			<%= pat_auth.text_area :long_term_goals, :cols => "60", :rows => "10" %><br/>
+			<%= 'Number of Visits per Week (Frequency)' %><br/>
+			<%= pat_auth.text_field :frequency_per_week %><br/>
+			<%= 'Session Length' %><br/>
+			<%= pat_auth.text_field :session_length %><br/>
+			<%= 'Severity Level' %>
+			<%= pat_auth.select :severity_level, options_for_select(['Mild', 'Moderate', 'Severe']) %><br/>
+			<%= 'Diagnosis' %>
+			<%= pat_auth.select :diagnosis, options_for_select(['Articulation', 'Fluency', 'Receptive Language', 'Expresive Language']) %>
     </div>
   <% end %>
   <p>
