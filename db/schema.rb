@@ -19,16 +19,16 @@ ActiveRecord::Schema.define(:version => 20111206145644) do
     t.integer  "visit_id"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
     t.string   "contact"
     t.string   "phone"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "patient_authorizations", :force => true do |t|
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20111206145644) do
     t.string   "severity_level"
     t.string   "diagnosis"
     t.boolean  "active",                :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   create_table "patients", :force => true do |t|
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(:version => 20111206145644) do
     t.string   "medicaid_number"
     t.string   "contact"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(:version => 20111206145644) do
     t.string   "last_sign_in_ip"
     t.integer  "organization_id"
     t.string   "role",                   :default => "admin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(:version => 20111206145644) do
     t.integer  "session_length"
     t.text     "visit_notes"
     t.string   "therapist_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
 end

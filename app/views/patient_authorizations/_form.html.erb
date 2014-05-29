@@ -30,7 +30,9 @@
     <%= 'Severity Level' %>
     <%= f.select :severity_level, options_for_select(['Mild', 'Moderate', 'Severe']) %><br/>
     <%= 'Diagnosis' %>
-    <%= f.select :diagnosis, options_for_select(['Articulation', 'Fluency', 'Receptive Language', 'Expresive Language']) %>
+    <%= f.select :diagnosis, options_for_select(['Articulation', 'Fluency', 'Receptive Language',
+																								'Expresive Language', 'Mixed Receptive/Expressive Language',
+																								'Feeding/Swallowing']) %>
     </div>
     <p><%= f.submit %></p>
 <% end %>
