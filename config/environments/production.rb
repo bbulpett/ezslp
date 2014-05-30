@@ -14,6 +14,7 @@ Ezslp3::Application.configure do
 
 	#this adds my static pages to precompile for heroku
 	config.assets.precompile += ['static_pages.css', 'event_calendar.css']
+	GA.tracker = "UA-51493431-1"
 
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'

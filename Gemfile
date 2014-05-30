@@ -28,6 +28,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'google-analytics-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
