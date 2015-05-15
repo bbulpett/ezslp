@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   belongs_to :organization
   accepts_nested_attributes_for :organization
 
-  after_create :send_welcome_mail, :send_notification_mail
+  # after_create :send_welcome_mail, :send_notification_mail
   def send_welcome_mail
      UserMailer.welcome_email(self).deliver
   end

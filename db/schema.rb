@@ -9,11 +9,14 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140624233014) do
+ActiveRecord::Schema.define(version: 20140624233014) do
 
-  create_table "events", :force => true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
     t.string   "name"
     t.integer  "organization_id"
     t.integer  "visit_id"
@@ -23,52 +26,7 @@ ActiveRecord::Schema.define(:version => 20140624233014) do
     t.datetime "updated_at"
   end
 
-  create_table "h_patient_authorizations", :id => false, :force => true do |t|
-    t.integer "id",                                      :null => false
-    t.integer "patient_id"
-    t.date    "from_date"
-    t.date    "to_date"
-    t.integer "initial_number_visits"
-    t.boolean "active",                :default => true
-    t.string  "short_term_goals"
-    t.string  "long_term_goals"
-    t.integer "frequency_per_week"
-    t.integer "session_length"
-    t.string  "severity_level"
-    t.string  "diagnosis"
-  end
-
-  create_table "h_patients", :id => false, :force => true do |t|
-    t.integer  "id",              :null => false
-    t.string   "first_name"
-    t.string   "middle_name"
-    t.string   "last_name"
-    t.string   "address_1"
-    t.string   "address_2"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
-    t.string   "phone"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "contact"
-    t.date     "dob"
-    t.string   "medicaid_number"
-    t.text     "user_id"
-  end
-
-  create_table "h_visits", :id => false, :force => true do |t|
-    t.integer  "id",                       :null => false
-    t.date     "visit_date"
-    t.text     "visit_notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "session_length"
-    t.integer  "patient_authorization_id"
-    t.text     "therapist_name"
-  end
-
-  create_table "organizations", :force => true do |t|
+  create_table "organizations", force: :cascade do |t|
     t.string   "name"
     t.string   "contact"
     t.string   "phone"
@@ -76,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20140624233014) do
     t.datetime "updated_at"
   end
 
-  create_table "patient_authorizations", :force => true do |t|
+  create_table "patient_authorizations", force: :cascade do |t|
     t.date     "to_date"
     t.date     "from_date"
     t.integer  "patient_id"
@@ -87,12 +45,12 @@ ActiveRecord::Schema.define(:version => 20140624233014) do
     t.string   "session_length"
     t.string   "severity_level"
     t.string   "diagnosis"
-    t.boolean  "active",                :default => true
+    t.boolean  "active",                default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "patients", :force => true do |t|
+  create_table "patients", force: :cascade do |t|
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
@@ -110,27 +68,27 @@ ActiveRecord::Schema.define(:version => 20140624233014) do
     t.datetime "updated_at"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",      :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",      :null => false
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "",      null: false
+    t.string   "encrypted_password",     default: "",      null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "organization_id"
-    t.string   "role",                                  :default => "admin"
+    t.string   "role",                   default: "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "visits", :force => true do |t|
+  create_table "visits", force: :cascade do |t|
     t.date     "visit_date"
     t.integer  "patient_authorization_id"
     t.integer  "session_length"
