@@ -2,8 +2,7 @@ class Patient < ActiveRecord::Base
   belongs_to :user
   has_many :patient_authorizations
   accepts_nested_attributes_for :patient_authorizations
-  has_one :current_authorization, :class_name => 'PatientAuthorization',
-                                  :conditions => { :active => true }
+  has_one :current_authorization, -> {where(active: true)}, class_name: 'PatientAuthorization'
 
 
   attr_accessible :first_name, :last_name, :middle_name, :address_1, :address_2, :city, :state, :zip, :phone, :dob, :medicaid_number, :contact, :user_id, :patient_authorizations_attributes
