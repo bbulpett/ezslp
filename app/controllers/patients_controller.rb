@@ -66,7 +66,7 @@ class PatientsController < ApplicationController
 
 #TODO this should only return all users for admin role
   def get_users_for_collection_select
-    @users = User.find_all_by_organization_id(current_user.organization, :order => :email)
+    @users = User.where(current_user.organization, order: :email)
   end
 
   def search
