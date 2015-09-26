@@ -425,3 +425,9 @@ hr { display: none; }
 #footer a {
 	color: #A2CAD1;
 }
+
+.features {
+	color: #337884;
+	font-style: italic;
+	font-weight: 600;
+}
